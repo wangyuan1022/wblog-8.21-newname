@@ -1,0 +1,58 @@
+.home-index-page {
+  background: linear-gradient(to bottom right, #a8e063, #56ab2f);
+  min-height: 100vh;
+  color: #333; /* 深色文字确保在浅绿色背景上可读 */
+
+  a {
+    color: #004d00; /* 调整链接颜色以适应绿色背景 */
+    
+    &:hover {
+      color: #002800;
+      text-decoration: underline;
+    }
+  }
+
+  .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .content {
+    background-color: rgba(255, 255, 255, 0.8); /* 内容区域半透明白色背景提高可读性 */
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .self-introduce {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .recent-content {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  .read-more {
+    background-color: rgba(255, 255, 255, 0.6);
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+  }
+
+  .blog-title {
+    a {
+      color: #004d00;
+      font-weight: bold;
+      
+      &:hover {
+        color: #002800;
+      }
+    }
+  }
+}
