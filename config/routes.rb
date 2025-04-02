@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :archives, only: [:index]
   resources :photos, only: [:create]
+  resources :changelogs, only: [:index, :show]
 
   get '/about', to: 'home#about'
 
@@ -40,6 +41,7 @@ Rails.application.routes.draw do
 
     resources :all_comments, only: [:index, :destroy]
     resources :labels
+    resources :changelogs
 
 
     root to: 'dashboard#index'

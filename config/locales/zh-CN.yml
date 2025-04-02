@@ -11,6 +11,9 @@ zh-CN:
   none: '无'
   qrcodetips: '扫一扫继续阅读或者帮我分享至朋友圈'
 
+  changelogs:
+    title: '变更记录'
+
   views:
     pagination:
       previous: '上一页'

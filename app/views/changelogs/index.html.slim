@@ -1,0 +1,39 @@
+.changelog-container
+  .row.justify-content-center
+    .col-sm-12.col-lg-9
+      - content_for(:title) do
+        = t('changelogs.title', default: '项目变更记录')
+
+      header.changelog-header
+        h1.mb-3
+          i.fas.fa-history.me-2
+          = t('changelogs.title', default: '项目变更记录')
+        p.text-muted 此页面展示本项目所有版本的更新历史和功能变更
+
+      .changelog-list
+        - if @changelogs.any?
+          - @changelogs.each do |changelog|
+            .changelog-item.mb-4
+              .changelog-header.d-flex.flex-column.flex-md-row.justify-content-md-between.align-items-md-center
+                h3.version
+                  span.badge.bg-primary.me-2
+                    = changelog.version
+                  - if changelog.release_date
+                    small.release-date
+                      i.far.fa-calendar-alt.me-1
+                      = format_date(changelog.release_date)
+                h4.title.mt-2.mt-md-0
+                  i.fas.fa-code-branch.me-2
+                  = changelog.title
+              .changelog-content.mt-3
+                .card.shadow-sm
+                  .card-body
+                    == simple_format(changelog.content)
+          
+          .d-flex.justify-content-center.mt-4
+            = paginate @changelogs
+        - else
+          .empty-state.text-center.py-5
+            i.fas.fa-clipboard-list.fa-3x.text-muted.mb-3
+            h4.text-muted 暂无变更记录
+            p.text-muted.small 项目的变更记录将在此处显示

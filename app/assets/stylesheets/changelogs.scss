@@ -1,0 +1,199 @@
+.changelog-container {
+  padding-top: 1.5rem;
+  margin-bottom: 3rem;
+
+  .changelog-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    
+    h1 {
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    p.text-muted {
+      font-size: 1rem;
+      color: #6c757d;
+      max-width: 80%;
+    }
+  }
+
+  .changelog-list {
+    padding-top: 1rem;
+    
+    .changelog-item {
+      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      background-color: #fff;
+      transition: all 0.2s ease-in-out;
+      
+      &:hover {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+        transform: translateY(-3px);
+      }
+      
+      .changelog-header {
+        margin-bottom: 1.25rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #f0f0f0;
+        
+        h3.version {
+          display: inline-block;
+          color: #2a2a2a;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+          font-size: 1.5rem;
+          
+          .release-date {
+            margin-left: 1rem;
+            color: #9e9e9e;
+            font-size: 0.95rem;
+            font-weight: normal;
+            vertical-align: middle;
+          }
+        }
+        
+        h4.title {
+          color: #3a3a3a;
+          font-size: 1.3rem;
+          font-weight: 500;
+          margin-bottom: 0;
+        }
+      }
+      
+      .changelog-content {
+        color: #4a4a4a;
+        line-height: 1.7;
+        font-size: 1.05rem;
+        
+        p {
+          margin-bottom: 0.85rem;
+        }
+        
+        ul {
+          padding-left: 1.75rem;
+          margin-bottom: 1.25rem;
+          
+          li {
+            list-style: disc;
+            margin-bottom: 0.6rem;
+            
+            &::marker {
+              color: #2199e8;
+            }
+          }
+        }
+      }
+      
+      hr {
+        display: none; // Hide horizontal rule since we're using cards
+      }
+    }
+  }
+  
+  .pagination {
+    margin-top: 2.5rem;
+    justify-content: center;
+    
+    .page-item {
+      .page-link {
+        color: #2199e8;
+        border-radius: 4px;
+        margin: 0 3px;
+        
+        &:hover {
+          background-color: rgba(33, 153, 232, 0.1);
+        }
+      }
+      
+      &.active .page-link {
+        background-color: #2199e8;
+        border-color: #2199e8;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .changelog-container {
+    padding-top: 1rem;
+    
+    .changelog-header {
+      margin-bottom: 2rem;
+      
+      h1 {
+        font-size: 1.75rem;
+      }
+      
+      p.text-muted {
+        max-width: 100%;
+      }
+    }
+    
+    .changelog-list {
+      .changelog-item {
+        padding: 1.25rem;
+        margin-bottom: 2rem;
+        
+        .changelog-header {
+          h3.version {
+            font-size: 1.35rem;
+            display: block;
+            
+            .release-date {
+              margin-left: 0;
+              display: block;
+              margin-top: 0.5rem;
+            }
+          }
+          
+          h4.title {
+            font-size: 1.2rem;
+            margin-top: 0.75rem;
+          }
+        }
+        
+        .changelog-content {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+// Dark mode compatibility (if the site supports it)
+@media (prefers-color-scheme: dark) {
+  .changelog-container {
+    .changelog-list {
+      .changelog-item {
+        background-color: #292929;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        
+        &:hover {
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .changelog-header {
+          border-bottom-color: #3a3a3a;
+          
+          h3.version {
+            color: #e0e0e0;
+          }
+          
+          h4.title {
+            color: #d0d0d0;
+          }
+        }
+        
+        .changelog-content {
+          color: #b0b0b0;
+        }
+      }
+    }
+  }
+}
