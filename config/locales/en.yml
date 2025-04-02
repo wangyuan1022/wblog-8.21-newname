@@ -11,6 +11,9 @@ en:
   none: 'None'
   qrcodetips: 'Continue reading with mobile phone or share it to Wechat Puppy'
 
+  changelogs:
+    title: 'Changelogs'
+
   views:
     pagination:
       previous: 'Prev'

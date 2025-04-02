@@ -1,0 +1,9 @@
+.row
+  .col-sm-8
+    = simple_form_for([:admin, @changelog], html: {novalidate: '' }) do |f|
+      = f.input :title
+      = f.input :version
+      = f.input :content, as: :text
+      = f.input :release_date, as: :date
+      = f.button :submit
+      = link_to '取消', admin_changelogs_path, class: 'btn btn-secondary'
