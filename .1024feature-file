@@ -1,0 +1,20 @@
+fileChangeLogs:
+  - config/database.yml
+  - config/application.yml
+  - '.1024'
+  - node_modules
+  - Gemfile.lock
+  - log/development.log
+  - app/assets/builds/application.js
+  - app/assets/builds/landing.js.map
+  - app/assets/builds/admin.js
+  - app/assets/builds/admin.js.map
+  - app/assets/builds/about.js
+  - app/assets/builds/application.js.map
+  - app/assets/builds/about.js.map
+  - app/assets/builds/base.js
+  - app/assets/builds/base.js.map
+  - app/assets/builds/landing.js
+  - app/assets/builds/application.css
+  - app/assets/builds/admin.css
+  - config/environments/development.rb
