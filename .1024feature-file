@@ -18,3 +18,22 @@ fileChangeLogs:
   - app/assets/builds/application.css
   - app/assets/builds/admin.css
   - config/environments/development.rb
+  - app/assets/stylesheets/bootstrap_custom.scss
+  - app/assets/stylesheets/home.scss
+  - app/assets/stylesheets/archives.scss
+  - app/assets/stylesheets/changelogs.scss
+  - app/assets/stylesheets/application.scss
+  - abc/1.txt
+  - abc/2.txt
+  - abc/3.txt
+  - abc/4.txt
+  - abc/5.txt
+  - abc/6.txt
+  - abc/7.txt
+  - abc/8.txt
+  - hhhh/1.js
+  - hhhh/2.js
+  - hhhh/3.js
+  - hhhh/4.js
+  - hhhh/5.js
+  - hhhh/6.js
