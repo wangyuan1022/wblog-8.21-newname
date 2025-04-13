@@ -5,7 +5,7 @@ WBlog
 [![Test Coverage](https://api.codeclimate.com/v1/badges/545d8372a9dda70b77fe/test_coverage)](https://codeclimate.com/github/windy/wblog/test_coverage)
 
 为移动而生的 Ruby on Rails 开源博客. WBlog 基于 MIT 协议, 自由使用.
-
+11111111111
 ~~现已全面支持 Ruby on Rails 6.1 版本!!!~~
 
 New: 现已经从 webpacker 升级至 jsbundling & cssbundling.
