@@ -3,7 +3,7 @@ WBlog
 [![Build Status](https://travis-ci.org/windy/wblog.svg?branch=master)](https://travis-ci.org/windy/wblog)
 [![Maintainability](https://api.codeclimate.com/v1/badges/545d8372a9dda70b77fe/maintainability)](https://codeclimate.com/github/windy/wblog/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/545d8372a9dda70b77fe/test_coverage)](https://codeclimate.com/github/windy/wblog/test_coverage)
-
+33333
 Ruby on Rails 7.xで構築された、待望のオープンソースブログシステム。
 
 WBlogはモバイルファーストで構築されたオープンソースブログで、MITライセンスに基づいており、無料で使用できます！
