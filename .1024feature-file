@@ -18,3 +18,4 @@ fileChangeLogs:
   - app/assets/builds/application.css
   - app/assets/builds/admin.css
   - app/assets/stylesheets/home.scss
+  - README.md
