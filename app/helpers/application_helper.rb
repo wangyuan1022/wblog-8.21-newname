@@ -52,6 +52,11 @@ module ApplicationHelper
     time.strftime("%Y.%m.%d")
   end
 
+  def format_changelog_date(date)
+    return '' if date.nil?
+    date.strftime("%b %d, %Y").sub(/^[a-z]/) { |m| m.upcase }
+  end
+
   def search_highlight(title, q)
     return title if q.blank?
 

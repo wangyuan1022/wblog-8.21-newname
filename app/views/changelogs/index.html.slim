@@ -10,25 +10,25 @@
           = t('changelogs.title', default: '项目变更记录')
         p.text-muted 此页面展示本项目所有版本的更新历史和功能变更
 
-      .changelog-list
+      .changelog-list.timeline-container
         - if @changelogs.any?
           - @changelogs.each do |changelog|
-            .changelog-item.mb-4
-              .changelog-header.d-flex.flex-column.flex-md-row.justify-content-md-between.align-items-md-center
-                h3.version
-                  span.badge.bg-primary.me-2
-                    = changelog.version
+            .changelog-item.timeline-item.mb-4
+              .timeline-date
+                .date-circle
                   - if changelog.release_date
-                    small.release-date
-                      i.far.fa-calendar-alt.me-1
-                      = format_date(changelog.release_date)
-                h4.title.mt-2.mt-md-0
-                  i.fas.fa-code-branch.me-2
-                  = changelog.title
-              .changelog-content.mt-3
-                .card.shadow-sm
-                  .card-body
-                    == simple_format(changelog.content)
+                    = format_changelog_date(changelog.release_date)
+              .timeline-line
+              .timeline-content
+                .content-header
+                  h3.version
+                    span.badge.bg-primary.me-2
+                      = changelog.version
+                  h4.title
+                    i.fas.fa-code-branch.me-2
+                    = changelog.title
+                .content-body.mt-3
+                  == simple_format(changelog.content)
           
           .d-flex.justify-content-center.mt-4
             = paginate @changelogs
