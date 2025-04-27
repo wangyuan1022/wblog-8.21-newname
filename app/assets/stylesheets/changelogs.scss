@@ -1,201 +1,337 @@
+// Variable definitions for easier color management
+$dark-bg: #1a1a1a;
+$content-bg: #2a2a2a;
+$primary-text: #e0e0e0;
+$secondary-text: #b0b0b0;
+$accent-color: #4db6ac; // Teal-like color for accents
+$timeline-line-color: #444;
+$timeline-circle-bg: $accent-color;
+$timeline-circle-border: #333;
+$link-color: #64b5f6; // Light blue for links
+$link-hover-color: #90caf9;
+$badge-bg: $accent-color;
+$badge-text: #111;
+
+body {
+  background-color: $dark-bg; // Apply dark background to the whole page if desired
+  color: $primary-text;
+}
+
 .changelog-container {
-  background-color: #a390a2;
-  padding: 20px;
-  border-radius: 5px;
-  padding-top: 1.5rem;
+  background-color: $dark-bg;
+  color: $primary-text;
+  padding: 40px 20px;
   margin-bottom: 3rem;
+  border-radius: 8px; // Subtle rounding
 
-  .changelog-header {
-    margin-bottom: 2.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #e0e0e0;
-    
+  .page-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid $timeline-line-color;
+
     h1 {
-      margin-bottom: 0.75rem;
       font-weight: 600;
-      color: #333;
+      color: $primary-text; // Ensure header text is light
+      margin-bottom: 0.75rem;
     }
-    
+
     p.text-muted {
-      font-size: 1rem;
-      color: #6c757d;
-      max-width: 80%;
+      font-size: 1.1rem;
+      color: $secondary-text; // Muted text should also be light
+      max-width: 90%;
+      margin: 0 auto;
     }
   }
 
-  .changelog-list {
-    padding-top: 1rem;
-    
-    .changelog-item {
-      margin-bottom: 2.5rem;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-      background-color: #fff;
-      transition: all 0.2s ease-in-out;
-      
-      &:hover {
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
-        transform: translateY(-3px);
-      }
-      
-      .changelog-header {
-        margin-bottom: 1.25rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid #f0f0f0;
-        
-        h3.version {
-          display: inline-block;
-          color: #2a2a2a;
-          font-weight: 700;
-          margin-bottom: 0.5rem;
-          font-size: 1.5rem;
-          
-          .release-date {
-            margin-left: 1rem;
-            color: #9e9e9e;
-            font-size: 0.95rem;
-            font-weight: normal;
-            vertical-align: middle;
-          }
-        }
-        
-        h4.title {
-          color: #3a3a3a;
-          font-size: 1.3rem;
-          font-weight: 500;
-          margin-bottom: 0;
-        }
-      }
-      
-      .changelog-content {
-        color: #4a4a4a;
-        line-height: 1.7;
-        font-size: 1.05rem;
-        
-        p {
-          margin-bottom: 0.85rem;
-        }
-        
-        ul {
-          padding-left: 1.75rem;
-          margin-bottom: 1.25rem;
-          
-          li {
-            list-style: disc;
-            margin-bottom: 0.6rem;
-            
-            &::marker {
-              color: #2199e8;
-            }
-          }
-        }
-      }
-      
-      hr {
-        display: none; // Hide horizontal rule since we're using cards
+  .timeline-container {
+    position: relative;
+    margin: 0 auto;
+    padding: 20px 0;
+    max-width: 900px; // Control max width for readability
+
+    // The main vertical timeline line (pseudo-element on the container)
+    &::before {
+      content: '';
+      position: absolute;
+      left: 130px; // Adjusted line position
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: $timeline-line-color;
+      border-radius: 2px;
+
+      // Adjust line position on smaller screens
+      @media (max-width: 768px) {
+        left: 30px; // Move line closer to the edge
       }
     }
   }
-  
-  .pagination {
-    margin-top: 2.5rem;
-    justify-content: center;
-    
-    .page-item {
-      .page-link {
-        color: #2199e8;
-        border-radius: 4px;
-        margin: 0 3px;
-        
-        &:hover {
-          background-color: rgba(33, 153, 232, 0.1);
+
+  .changelog-item.timeline-item {
+    display: flex;
+    position: relative;
+    margin-bottom: 50px; // Space between timeline items
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    // Timeline circle marker
+    &::before {
+      content: '';
+      position: absolute;
+      left: 124px; // Center the circle on the new line position (130 - 6)
+      top: 10px; // Align with the date vertically
+      width: 16px;
+      height: 16px;
+      background: $timeline-circle-bg;
+      border: 3px solid $timeline-circle-border;
+      border-radius: 50%;
+      z-index: 1; // Ensure circle is above the line
+
+      @media (max-width: 768px) {
+        left: 24px; // Adjust circle for moved line (30 - 6)
+      }
+    }
+  }
+
+  .timeline-date {
+    position: absolute; // Position date absolutely to the left
+    left: 0;
+    width: 115px; // Width for the date container
+    text-align: right;
+    padding-right: 15px; // Space between date text and the line
+    top: 8px; // Align vertically with the circle's top edge
+    font-weight: 500;
+    color: $primary-text; // Make date text clearer
+    font-size: 1rem;   // Increase date font size slightly
+
+    @media (max-width: 768px) {
+      position: relative; // Revert to relative positioning
+      left: auto;
+      width: auto;      // Allow natural width
+      text-align: left; // Align left on mobile
+      padding-left: 50px; // Space date away from the circle/line (30 + 20)
+      padding-right: 0;
+      top: auto;
+      margin-bottom: 10px; // Space between date and content below
+      font-size: 0.85rem; // Keep mobile font size smaller
+    }
+  }
+
+  // Hide the specific .timeline-line div, use ::before on container instead
+  .timeline-line {
+     display: none;
+  }
+
+
+  .timeline-content {
+    flex-grow: 1;
+    background-color: $content-bg;
+    padding: 15px 20px; // Slightly adjust padding
+    border-radius: 8px;
+    margin-left: 160px; // Space from left edge (line_left + margin)
+    position: relative; // For potential future pseudo-elements like arrows
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .content-header {
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid $timeline-line-color;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap; // Allow wrapping on small screens
+
+      h3.version {
+        font-size: 1.4rem;
+        color: $primary-text;
+        font-weight: 700;
+        margin: 0;
+
+        .badge {
+          font-size: 0.9rem;
+          vertical-align: middle;
+          background-color: $badge-bg;
+          color: $badge-text;
+          font-weight: 600;
         }
       }
-      
+
+      h4.title {
+        font-size: 1.2rem;
+        color: $accent-color; // Use accent color for title
+        font-weight: 500;
+        margin: 0 0 0 15px; // Space between version and title
+
+        i {
+          margin-right: 8px;
+          color: $secondary-text;
+        }
+
+        @media (max-width: 576px) {
+          margin-left: 0; // Stack title below version on very small screens
+          margin-top: 8px;
+          width: 100%; // Take full width
+        }
+      }
+    }
+
+    .content-body {
+      color: $primary-text;
+      line-height: 1.7;
+      font-size: 1rem;
+
+      p {
+        margin-bottom: 0.85rem;
+      }
+
+      ul {
+        padding-left: 20px; // Indent list
+        margin-bottom: 1rem;
+
+        li {
+          list-style: disc;
+          margin-bottom: 0.6rem;
+
+          &::marker {
+            color: $accent-color; // Style the list bullet
+          }
+        }
+      }
+
+      a {
+        color: $link-color;
+        text-decoration: none;
+        &:hover {
+          color: $link-hover-color;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      margin-left: 50px; // Align content with the date's indent (padding-left)
+      width: calc(100% - 50px); // Ensure it doesn't overlap the line area
+      padding: 15px 15px; // Adjust padding for smaller screens
+    }
+  }
+
+  .no-entries {
+    text-align: center;
+    color: $secondary-text;
+    padding: 40px 0;
+    font-size: 1.1rem;
+  }
+
+  .pagination {
+    margin-top: 3rem;
+    justify-content: center; // Center pagination
+
+    .page-item {
+      margin: 0 4px;
+
+      .page-link {
+        background-color: $content-bg;
+        border: 1px solid $timeline-line-color;
+        color: $link-color;
+        border-radius: 4px;
+        transition: background-color 0.2s ease, color 0.2s ease;
+
+        &:hover {
+          background-color: lighten($content-bg, 5%);
+          color: $link-hover-color;
+          border-color: lighten($timeline-line-color, 10%);
+        }
+
+        &:focus {
+           box-shadow: 0 0 0 0.2rem rgba($link-color, 0.25);
+        }
+      }
+
       &.active .page-link {
-        background-color: #2199e8;
-        border-color: #2199e8;
+        background-color: $accent-color;
+        border-color: $accent-color;
+        color: $dark-bg; // Dark text on active background
+        font-weight: 600;
+      }
+
+      &.disabled .page-link {
+        background-color: darken($content-bg, 5%);
+        color: darken($secondary-text, 15%);
+        border-color: $timeline-line-color;
+        cursor: not-allowed;
       }
     }
   }
 }
 
-// Responsive adjustments
+// Responsive adjustments for the timeline structure
 @media (max-width: 768px) {
   .changelog-container {
-    padding-top: 1rem;
-    
-    .changelog-header {
+    padding: 20px 10px;
+
+    .page-header {
       margin-bottom: 2rem;
-      
-      h1 {
-        font-size: 1.75rem;
-      }
-      
-      p.text-muted {
-        max-width: 100%;
+      h1 { font-size: 1.8rem; }
+      p.text-muted { font-size: 1rem; max-width: 100%; }
+    }
+
+    .timeline-container {
+      &::before {
+        left: 30px; // Keep line on the left
       }
     }
-    
-    .changelog-list {
-      .changelog-item {
-        padding: 1.25rem;
-        margin-bottom: 2rem;
-        
-        .changelog-header {
-          h3.version {
-            font-size: 1.35rem;
-            display: block;
-            
-            .release-date {
-              margin-left: 0;
-              display: block;
-              margin-top: 0.5rem;
-            }
-          }
-          
-          h4.title {
-            font-size: 1.2rem;
-            margin-top: 0.75rem;
-          }
-        }
-        
-        .changelog-content {
-          font-size: 1rem;
-        }
+
+    .changelog-item.timeline-item {
+      flex-direction: column; // Stack columns vertically
+
+      // Reset ::before positioning for vertical stacking
+      &::before {
+         left: 24px; // Keep circle on the line (30 - 6)
+         top: 0; // Align circle with the top of the item
       }
+    }
+
+    .timeline-date {
+      position: relative; // Revert to relative positioning
+      left: auto;
+      width: auto;      // Allow natural width
+      text-align: left; // Align left on mobile
+      padding-left: 50px; // Space date away from the circle/line (30 + 20)
+      padding-right: 0;
+      top: auto;
+      margin-bottom: 10px; // Space between date and content below
+      font-size: 0.85rem; // Keep mobile font size smaller
+    }
+
+    .timeline-content {
+      margin-left: 50px; // Align content with the date's indent (padding-left)
+      width: calc(100% - 50px); // Ensure it doesn't overlap the line area
+      padding: 15px 15px; // Adjust padding for smaller screens
     }
   }
 }
 
-// Dark mode compatibility (if the site supports it)
-@media (prefers-color-scheme: dark) {
+// Further adjustments for very small screens if needed
+@media (max-width: 576px) {
   .changelog-container {
-    .changelog-list {
-      .changelog-item {
-        background-color: #292929;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-        
-        &:hover {
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .changelog-header {
-          border-bottom-color: #3a3a3a;
-          
-          h3.version {
-            color: #e0e0e0;
-          }
-          
-          h4.title {
-            color: #d0d0d0;
-          }
-        }
-        
-        .changelog-content {
-          color: #b0b0b0;
-        }
+    .page-header h1 { font-size: 1.6rem; }
+
+    .timeline-content {
+      .content-header {
+        h3.version { font-size: 1.2rem; }
+        h4.title { font-size: 1.1rem; }
+      }
+
+      .content-body {
+        font-size: 0.95rem;
       }
     }
   }
