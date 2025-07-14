@@ -59,8 +59,3 @@ yarn-debug.log*
 # Environment configuration files
 .env*
 
-# Clacky-related configuration
-.1024*
-!.1024
-.breakpoints
-/config/credentials/development.key
