@@ -4,7 +4,7 @@ WBlog
 [![Maintainability](https://api.codeclimate.com/v1/badges/545d8372a9dda70b77fe/maintainability)](https://codeclimate.com/github/windy/wblog/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/545d8372a9dda70b77fe/test_coverage)](https://codeclimate.com/github/windy/wblog/test_coverage)
 
-继承其他thread的环境然后关闭
+11111
 
 The missing open source blog system on Ruby on Rails 7.x.
 
