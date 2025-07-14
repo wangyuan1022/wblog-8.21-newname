@@ -1,13 +1,13 @@
 .home-index-page {
-  background: #e3f2fd;
+  background: #f3e5ff;
   min-height: 100vh;
-  color: #333; /* 深色文字确保在浅蓝色背景上可读 */
+  color: #333; /* 深色文字确保在浅紫色背景上可读 */
 
   a {
-    color: #007bff; /* 调整链接颜色以适应蓝色背景 */
+    color: #6f42c1; /* 调整链接颜色以适应紫色背景 */
     
     &:hover {
-      color: #0056b3;
+      color: #5a2d91;
       text-decoration: underline;
     }
   }
@@ -47,11 +47,11 @@
 
   .blog-title {
     a {
-      color: #007bff;
+      color: #6f42c1;
       font-weight: bold;
       
       &:hover {
-        color: #0056b3;
+        color: #5a2d91;
       }
     }
   }
