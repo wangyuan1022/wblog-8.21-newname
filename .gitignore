@@ -59,3 +59,51 @@ yarn-debug.log*
 # Environment configuration files
 .env*
 
+# Clacky-related configuration
+.clacky*
+
+# Ruby-specific files
+*.gem
+*.rbc
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/spec/reports/
+/spec/examples.txt
+/test/tmp/
+/test/version_tmp/
+
+# Rails-specific files
+/db/*.sqlite3
+/db/*.sqlite3-*
+/log/*.log
+/tmp/cache/
+/tmp/pids/
+/tmp/sessions/
+/tmp/sockets/
+/vendor/cache/
+/vendor/bundle/
+
+# Package manager directories
+node_modules/
+.pnp
+.pnp.js
+yarn-debug.log*
+yarn-error.log*
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+

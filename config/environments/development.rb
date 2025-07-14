@@ -74,7 +74,10 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
 
-  # Allow any domain to access the application in development mode
-  config.hosts << /.*/
+  # Allow external hosts for Clacky environment
   config.hosts << /.*\.clackypaas\.com/
+  config.hosts << 'localhost'
+  config.hosts << '127.0.0.1'
+  config.hosts << '0.0.0.0'
+  config.hosts << /.*/
 end
