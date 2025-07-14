@@ -1,9 +1,14 @@
 @use "sass:color";
 
-$body-bg:                                 #e6e6fa !default;
-$link-color:                              #DC143C !default;
+// Blue theme color palette
+$primary-blue:                            #007bff !default;
+$dark-blue:                               #0056b3 !default;
+$light-blue-bg:                           #e3f2fd !default;
+
+$body-bg:                                 $light-blue-bg !default;
+$link-color:                              $primary-blue !default;
 $link-decoration:                         none !default;
-$link-hover-color:                        color.adjust($link-color, $lightness: -15%) !default;
+$link-hover-color:                        $dark-blue !default;
 $link-hover-decoration:                   none !default;
 
 @forward 'bootstrap/scss/bootstrap';
