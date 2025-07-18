@@ -59,3 +59,39 @@ yarn-debug.log*
 # Environment configuration files
 .env*
 
+# Clacky-related configuration
+/.clackyai/
+.clacky*
+
+# Ruby-specific
+*.gem
+*.rbc
+.rbenv-vars
+.ruby-version
+.ruby-gemset
+.rvmrc
+
+# Rails-specific
+/db/*.sqlite3-wal
+/config/secrets.yml
+/config/credentials/*.key
+/coverage/
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.sublime-*
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.DS_Store
+
+# Package manager files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json.bak
+yarn.lock.bak
+

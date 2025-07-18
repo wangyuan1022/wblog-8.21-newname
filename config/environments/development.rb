@@ -77,4 +77,7 @@ Rails.application.configure do
   # Allow any domain to access the application in development mode
   config.hosts << /.*/
   config.hosts << /.*\.clackypaas\.com/
+  config.hosts << 'localhost'
+  config.hosts << '127.0.0.1'
+  config.hosts << '0.0.0.0'
 end
