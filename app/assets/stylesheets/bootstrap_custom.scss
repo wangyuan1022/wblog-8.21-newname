@@ -1,23 +1,23 @@
 @use "sass:color";
 
-// Purple theme color palette
-$primary-purple:                          #6f42c1 !default;
-$dark-purple:                             #5a2d91 !default;
-$light-purple-bg:                         #f3e5ff !default;
-$accent-purple:                           #8e44ad !default;
+// Orange theme color palette
+$primary-orange:                          #ff8c42 !default;
+$dark-orange:                             #cc5500 !default;
+$light-orange-bg:                         #fff5e6 !default;
+$accent-orange:                           #ff6600 !default;
 
 // Override Bootstrap primary color
-$primary:                                 $primary-purple !default;
-$primary-hover:                           $dark-purple !default;
+$primary:                                 $primary-orange !default;
+$primary-hover:                           $dark-orange !default;
 
-$body-bg:                                 $light-purple-bg !default;
-$link-color:                              $primary-purple !default;
+$body-bg:                                 $light-orange-bg !default;
+$link-color:                              $primary-orange !default;
 $link-decoration:                         none !default;
-$link-hover-color:                        $dark-purple !default;
+$link-hover-color:                        $dark-orange !default;
 $link-hover-decoration:                   none !default;
 
 // Bootstrap button colors
-$btn-primary-bg:                          $primary-purple !default;
-$btn-primary-border:                      $primary-purple !default;
+$btn-primary-bg:                          $primary-orange !default;
+$btn-primary-border:                      $primary-orange !default;
 
 @forward 'bootstrap/scss/bootstrap';

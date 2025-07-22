@@ -13,8 +13,8 @@ $badge-bg: $accent-color;
 $badge-text: #111;
 
 body {
-  background-color: $dark-bg; // Apply dark background to the whole page if desired
-  color: $primary-text;
+  background-color: #fff5e6; // Apply orange background to the whole page
+  color: #333; // Dark text for better readability on light background
 }
 
 .changelog-container {
