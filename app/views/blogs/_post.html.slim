@@ -1,23 +1,28 @@
-= render partial: 'post_head', locals: { post: post }
+.blog-post-article
+  = render partial: 'post_head', locals: { post: post }
 
-.content.markdown
-  == post.content_html
+  .blog-post-content.markdown
+    == post.content_html
 
-p.ptag.published-at
-  | #{t('announce_at')}
-  span #{format_date(post.created_at)}
-
-= render 'common/copyright'
-hr.blog-over
-p data-controller='like'
-  button.like-button class="#{'liked' if post.liked_by?(cookies[:like])}" type='button' data-url=blog_likes_path(post) data-like-target='button' data-action='click->like#toggle'
-    span.count #{@likes_count}
-    span Like
-  .qrcode-controller data-controller='qrcode'
-    .qrcode
-      a#qrcode-link href='#' data-action='click->qrcode#greet'
-        i.fi-link
-        | #{t('qr_code')}
-    .social-share data-qrcode-target='wrapper'
-      .qrcode-wrapper
-        = render partial: "qrcode", locals: { str: blog_url(post) }
+  .blog-post-footer
+    .post-interactions data-controller='like'
+      .interaction-group
+        button.like-button class="#{'liked' if post.liked_by?(cookies[:like])}" type='button' data-url=blog_likes_path(post) data-like-target='button' data-action='click->like#toggle'
+          i.fa.fa-heart.me-2
+          span.count #{@likes_count}
+          span 喜欢
+        
+        .qrcode-controller data-controller='qrcode'
+          button.qr-button data-action='click->qrcode#greet'
+            i.fa.fa-qrcode.me-2
+            | #{t('qr_code')}
+          .social-share data-qrcode-target='wrapper'
+            .qrcode-wrapper
+              = render partial: "qrcode", locals: { str: blog_url(post) }
+    
+    .post-meta-footer
+      .published-info
+        i.fa.fa-clock.me-2
+        span.text-muted #{t('announce_at')} #{format_date(post.created_at)}
+      
+      = render 'common/copyright'

@@ -2,6 +2,10 @@
 @use 'fontawsome_custom';
 @use 'libs/markdown';
 
+@use 'navigation';
+@use 'responsive';
+@use 'animations';
+@use 'typography';
 @use 'aboutme_welcome';
 @use 'archives';
 @use 'blogs';
@@ -14,8 +18,8 @@
 @use 'home';
 
 .turbo-progress-bar {
-  height: 2px;
-  background-color: #ff8c42;
+  height: 4px;
+  background: linear-gradient(90deg, #4f46e5, #06b6d4);
 }
 
 img {

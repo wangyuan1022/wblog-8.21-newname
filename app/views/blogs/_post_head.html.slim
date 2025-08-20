@@ -1,5 +1,18 @@
 / require: locals: { post : post }
-h2.blog-title #{post.title}
-p.ptag
-  span.fa.fa-list
-  span #{post.labels_content}
+.blog-post-header
+  h1.blog-post-title #{post.title}
+  .blog-post-meta
+    .post-labels
+      - if post.labels.any?
+        i.fa.fa-tags.me-2
+        - post.labels.each_with_index do |label, index|
+          span.badge.post-label class=(cycle('label-primary', 'label-secondary', 'label-accent'))
+            = label.name
+          - unless index == post.labels.count - 1
+            | &nbsp;
+    .post-date
+      i.fa.fa-calendar.me-2
+      span.text-muted #{format_date(post.created_at)}
+    .post-stats
+      i.fa.fa-eye.me-2
+      span.text-muted 阅读量统计

@@ -1,0 +1,428 @@
+// Responsive Design Improvements
+
+// Mobile-first approach with improved breakpoints
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+$wide: 1200px;
+
+// Global responsive improvements
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Container improvements
+.container {
+  @media (max-width: #{$mobile}) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+// Typography responsive scaling
+h1, .h1 {
+  @media (max-width: #{$tablet}) {
+    font-size: 2rem;
+  }
+  @media (max-width: #{$mobile}) {
+    font-size: 1.75rem;
+  }
+}
+
+h2, .h2 {
+  @media (max-width: #{$tablet}) {
+    font-size: 1.75rem;
+  }
+  @media (max-width: #{$mobile}) {
+    font-size: 1.5rem;
+  }
+}
+
+h3, .h3 {
+  @media (max-width: #{$tablet}) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: #{$mobile}) {
+    font-size: 1.25rem;
+  }
+}
+
+// Button responsive improvements
+.btn {
+  @media (max-width: #{$mobile}) {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+// Card responsive improvements
+.card, .content, .blog-post-container {
+  @media (max-width: #{$tablet}) {
+    margin: 16px 0;
+    border-radius: 12px;
+  }
+  
+  @media (max-width: #{$mobile}) {
+    margin: 12px 0;
+    border-radius: 8px;
+    padding: 16px !important;
+  }
+}
+
+// Navigation responsive improvements
+.my-navbar {
+  @media (max-width: #{$tablet}) {
+    padding: 0.75rem 0;
+    
+    .container {
+      padding: 0 16px;
+    }
+    
+    .navbar-brand {
+      font-size: 1.25rem;
+    }
+    
+    .navbar-nav .nav-link {
+      padding: 12px 16px !important;
+      font-size: 0.95rem;
+    }
+  }
+  
+  @media (max-width: #{$mobile}) {
+    .navbar-brand {
+      font-size: 1.125rem;
+    }
+    
+    .navbar-collapse {
+      margin-top: 12px;
+      padding: 16px;
+    }
+  }
+}
+
+// Home page responsive improvements
+.home-index-page {
+  @media (max-width: #{$tablet}) {
+    .container {
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+    
+    .content, .self-introduce, .subscription-card {
+      padding: 24px !important;
+      margin-top: 24px !important;
+    }
+    
+    .blog-title h1 {
+      font-size: 1.75rem !important;
+    }
+    
+    .post-meta {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 1rem !important;
+    }
+  }
+  
+  @media (max-width: #{$mobile}) {
+    .container {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+    
+    .content, .self-introduce, .subscription-card {
+      padding: 16px !important;
+      margin-top: 16px !important;
+    }
+    
+    .read-more {
+      width: 100%;
+      text-align: center;
+      margin-top: 16px;
+    }
+    
+    .recent-post-item {
+      padding: 12px 16px !important;
+    }
+    
+    .qr-code-container .wechat_qrcode {
+      width: 120px !important;
+      height: 120px !important;
+    }
+  }
+}
+
+// Blog post responsive improvements
+.blogs-show-page {
+  @media (max-width: #{$tablet}) {
+    .blog-post-container {
+      padding: 32px !important;
+      margin: 16px;
+      border-radius: 16px !important;
+    }
+    
+    .blog-post-header {
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      
+      .blog-post-title {
+        font-size: 2rem !important;
+        margin-bottom: 20px;
+      }
+      
+      .blog-post-meta {
+        gap: 1.5rem !important;
+      }
+    }
+    
+    .blog-post-content.markdown {
+      font-size: 1.05rem;
+      
+      h1 { font-size: 1.875rem !important; }
+      h2 { font-size: 1.625rem !important; }
+      h3 { font-size: 1.375rem !important; }
+      h4 { font-size: 1.125rem !important; }
+      
+      blockquote {
+        padding: 1rem 1.5rem;
+        margin: 1.5rem 0;
+      }
+      
+      pre {
+        padding: 1rem;
+        margin: 1.5rem 0;
+        font-size: 0.85rem;
+      }
+      
+      table {
+        font-size: 0.9rem;
+        
+        th, td {
+          padding: 0.75rem;
+        }
+      }
+    }
+    
+    .post-interactions .interaction-group {
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+  
+  @media (max-width: #{$mobile}) {
+    .blog-post-container {
+      padding: 20px !important;
+      margin: 8px;
+      border-radius: 12px !important;
+    }
+    
+    .blog-post-header {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      
+      .blog-post-title {
+        font-size: 1.625rem !important;
+        line-height: 1.3;
+      }
+      
+      .blog-post-meta {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 1rem !important;
+        
+        .post-labels {
+          flex-wrap: wrap;
+          
+          .post-label {
+            font-size: 0.75rem;
+            padding: 0.375rem 0.75rem;
+          }
+        }
+      }
+    }
+    
+    .blog-post-content.markdown {
+      font-size: 1rem;
+      
+      h1 { font-size: 1.625rem !important; }
+      h2 { font-size: 1.375rem !important; }
+      h3 { font-size: 1.25rem !important; }
+      h4 { font-size: 1.125rem !important; }
+      
+      blockquote {
+        padding: 0.75rem 1rem;
+        margin: 1rem 0;
+      }
+      
+      pre {
+        padding: 0.75rem;
+        margin: 1rem 0;
+        font-size: 0.8rem;
+        overflow-x: auto;
+      }
+      
+      img {
+        margin: 1rem 0;
+        border-radius: 8px;
+      }
+      
+      table {
+        font-size: 0.85rem;
+        
+        th, td {
+          padding: 0.5rem;
+        }
+      }
+    }
+    
+    .blog-post-footer {
+      margin-top: 32px;
+      padding-top: 24px;
+      
+      .post-interactions .interaction-group {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        
+        .like-button, .qr-button {
+          width: 100%;
+          justify-content: center;
+          padding: 14px 20px;
+        }
+      }
+    }
+    
+    .post-navigation {
+      .nav-link {
+        padding: 16px !important;
+        
+        .nav-title {
+          font-size: 0.9rem;
+          -webkit-line-clamp: 3;
+        }
+      }
+    }
+    
+    .comment-section {
+      padding: 20px !important;
+    }
+  }
+}
+
+// Form responsive improvements
+.form-group, .mb-3 {
+  @media (max-width: #{$mobile}) {
+    margin-bottom: 1rem;
+  }
+}
+
+.form-control {
+  @media (max-width: #{$mobile}) {
+    font-size: 16px; // Prevents zoom on iOS
+  }
+}
+
+// Admin interface responsive improvements
+.admin-page {
+  @media (max-width: #{$tablet}) {
+    .app-wrapper {
+      padding: 0;
+    }
+    
+    .app-main {
+      margin-left: 0 !important;
+    }
+    
+    .main-sidebar {
+      position: fixed !important;
+      z-index: 1050;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      
+      &.sidebar-open {
+        transform: translateX(0);
+      }
+    }
+    
+    .app-content {
+      padding: 16px;
+    }
+  }
+}
+
+// Utility classes for responsive design
+.mobile-only {
+  @media (min-width: #{$tablet}) {
+    display: none !important;
+  }
+}
+
+.tablet-up {
+  @media (max-width: #{$tablet - 1}) {
+    display: none !important;
+  }
+}
+
+.desktop-only {
+  @media (max-width: #{$desktop - 1}) {
+    display: none !important;
+  }
+}
+
+// Touch-friendly improvements
+@media (hover: none) and (pointer: coarse) {
+  // Touch device improvements
+  .btn, .nav-link, .like-button, .qr-button {
+    min-height: 44px; // Apple's recommended touch target size
+    min-width: 44px;
+  }
+  
+  // Remove hover effects on touch devices
+  .card:hover, .nav-link:hover, .content:hover {
+    transform: none !important;
+    box-shadow: inherit !important;
+  }
+  
+  // Increase touch target sizes
+  .post-label, .badge {
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+  }
+}
+
+// High-DPI displays
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  // Crisp text rendering for high-DPI displays
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  // Sharper borders
+  .card, .btn, .form-control {
+    border-width: 0.5px;
+  }
+}
+
+// Print styles
+@media print {
+  .navbar, .post-interactions, .post-navigation, .comment-section {
+    display: none !important;
+  }
+  
+  .blog-post-container {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    padding: 20px !important;
+  }
+  
+  .blog-post-content {
+    color: #000 !important;
+    
+    a {
+      color: #000 !important;
+      text-decoration: underline !important;
+    }
+  }
+}

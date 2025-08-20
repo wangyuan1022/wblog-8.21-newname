@@ -2,3 +2,5 @@
 //
 import './base'
 import './about'
+import './navigation'
+import './animations'

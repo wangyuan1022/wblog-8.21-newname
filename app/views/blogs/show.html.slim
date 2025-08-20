@@ -5,21 +5,38 @@
 - content_for(:title) do
   | #{@post.title}
 / data-url=refresh_blog_comments_path(@post) data-post_id=@post.id
-.container.blog-wrapper
+.container.blog-wrapper.py-5
   .row.justify-content-center
-    .col-xs-12.col-lg-9
-      = render partial: "post", :locals=> { post: @post }
-.comment-field
-  = render partial: 'comment', locals: { comments: @comments, post: @post }
-  p
-  .container
-    .row.justify-content-center
-      .col-xs-12.col-lg-9
-        - if @prev
-          = link_to blog_path(@prev), class: 'prev' do
-            i.fa.fa-arrow-left
-            | 上一篇
-        - if @next
-          = link_to blog_path(@next), class: 'next' do
-            | 下一篇
-            i.fa.fa-arrow-right
+    .col-12.col-lg-10.col-xl-8
+      .blog-post-container
+        = render partial: "post", :locals=> { post: @post }
+        
+        .post-navigation.mt-5
+          .row.g-3
+            .col-6
+              - if @prev
+                = link_to blog_path(@prev), class: 'nav-link prev-post' do
+                  .nav-direction
+                    i.fa.fa-arrow-left.me-2
+                    span 上一篇
+                  .nav-title #{@prev.title}
+              - else
+                .nav-link.disabled
+                  .nav-direction
+                    i.fa.fa-arrow-left.me-2
+                    span 已是第一篇
+            .col-6
+              - if @next
+                = link_to blog_path(@next), class: 'nav-link next-post text-end' do
+                  .nav-direction
+                    span 下一篇
+                    i.fa.fa-arrow-right.ms-2
+                  .nav-title #{@next.title}
+              - else
+                .nav-link.disabled.text-end
+                  .nav-direction
+                    span 已是最后一篇
+                    i.fa.fa-arrow-right.ms-2
+        
+        .comment-section.mt-5
+          = render partial: 'comment', locals: { comments: @comments, post: @post }
