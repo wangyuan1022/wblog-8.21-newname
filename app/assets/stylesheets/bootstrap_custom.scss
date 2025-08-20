@@ -1,23 +1,52 @@
 @use "sass:color";
 
-// Orange theme color palette
-$primary-orange:                          #ff8c42 !default;
-$dark-orange:                             #cc5500 !default;
-$light-orange-bg:                         #fff5e6 !default;
-$accent-orange:                           #ff6600 !default;
+// Modern harmonious color palette
+$primary-blue:                            #4f46e5 !default; // Indigo-600
+$primary-blue-dark:                       #3730a3 !default; // Indigo-800
+$primary-blue-light:                      #eef2ff !default; // Indigo-50
+$accent-teal:                             #06b6d4 !default; // Cyan-500
+$accent-purple:                           #8b5cf6 !default; // Violet-500
+
+// Neutral colors
+$gray-50:                                #f9fafb !default;
+$gray-100:                               #f3f4f6 !default;
+$gray-200:                               #e5e7eb !default;
+$gray-300:                               #d1d5db !default;
+$gray-400:                               #9ca3af !default;
+$gray-500:                               #6b7280 !default;
+$gray-600:                               #4b5563 !default;
+$gray-700:                               #374151 !default;
+$gray-800:                               #1f2937 !default;
+$gray-900:                               #111827 !default;
 
 // Override Bootstrap primary color
-$primary:                                 $primary-orange !default;
-$primary-hover:                           $dark-orange !default;
+$primary:                                 $primary-blue !default;
+$primary-hover:                           $primary-blue-dark !default;
 
-$body-bg:                                 $light-orange-bg !default;
-$link-color:                              $primary-orange !default;
+$body-bg:                                 $gray-50 !default;
+$link-color:                              $primary-blue !default;
 $link-decoration:                         none !default;
-$link-hover-color:                        $dark-orange !default;
+$link-hover-color:                        $primary-blue-dark !default;
 $link-hover-decoration:                   none !default;
 
 // Bootstrap button colors
-$btn-primary-bg:                          $primary-orange !default;
-$btn-primary-border:                      $primary-orange !default;
+$btn-primary-bg:                          $primary-blue !default;
+$btn-primary-border:                      $primary-blue !default;
+
+// Additional theme colors
+$success:                                 #10b981 !default; // Emerald-500
+$info:                                    $accent-teal !default;
+$warning:                                 #f59e0b !default; // Amber-500
+$danger:                                  #ef4444 !default; // Red-500
+
+// Card and surface colors
+$card-bg:                                 #ffffff !default;
+$card-border-color:                       $gray-200 !default;
+$navbar-dark-bg:                          $gray-800 !default;
+
+// Typography colors
+$text-primary:                            $gray-900 !default;
+$text-secondary:                          $gray-600 !default;
+$text-muted:                              $gray-500 !default;
 
 @forward 'bootstrap/scss/bootstrap';

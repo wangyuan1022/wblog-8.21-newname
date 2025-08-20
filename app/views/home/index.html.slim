@@ -3,28 +3,41 @@
     meta name="description" content="#{ENV['INTRODUCE'].dup.force_encoding('UTF-8')}"
 - content_for(:title) do
   | #{t('title.home')}
-.container
-  .row
-    .col-sm-12.col-lg-8
+.container.py-5
+  .row.g-4
+    .col-12.col-lg-8
       - unless @newest
-        = render 'common/no_blog_here'
+        .empty-state.text-center.py-5
+          i.fa.fa-edit.fa-3x.text-muted.mb-3
+          h3.text-muted 暂无文章
+          p.text-muted 还没有发布任何文章，请稍后再来查看。
       - else
-        = render partial: 'post_head', locals: { post: @newest }
-        .content.markdown
-          == @newest.sub_content
-          = link_to t('home.read'), blog_path(@newest), class: 'read-more'
-          p.published-at #{t('home.created_at')} #{format_date(@newest.created_at)}
+        .featured-post.mb-5
+          = render partial: 'post_head', locals: { post: @newest }
+          .content.markdown
+            == @newest.sub_content
+            .post-actions.mt-4
+              = link_to t('home.read'), blog_path(@newest), class: 'read-more'
 
         - if @recent.present?
-          h4.recent-title #{t('home.recent')}
-          ul.recent-content
-            - @recent.each do |re|
-              li = link_to re.title, blog_path(re)
+          .recent-posts
+            h4.recent-title #{t('home.recent')}
+            .recent-content
+              - @recent.each do |post|
+                .recent-post-item
+                  = link_to post.title, blog_path(post), class: 'recent-post-link'
+                  .recent-post-meta
+                    i.fa.fa-calendar.me-2
+                    span.text-muted #{format_date(post.created_at)}
 
-    .col-lg-4.self-introduce
-      / Adjust it in common/welcome
-      = render 'common/welcome'
-      h4 #{t('subscribes.title')}
-      .row
-        .col-12.col-md-6.col-lg-12
-          = image_tag 'wechat_qrcode.jpg', class: "wechat_qrcode"
+    .col-12.col-lg-4
+      .sidebar-content
+        .welcome-card.self-introduce
+          / Adjust it in common/welcome
+          = render 'common/welcome'
+        
+        .subscription-card
+          h4.sidebar-title #{t('subscribes.title')}
+          .qr-code-container
+            = image_tag 'wechat_qrcode.jpg', class: "wechat_qrcode", alt: "微信二维码"
+            p.qr-description.text-muted 扫码关注获取最新文章

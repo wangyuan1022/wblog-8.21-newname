@@ -1,0 +1,575 @@
+// Modern Typography and Spacing System
+
+// Font imports (Google Fonts)
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+// Typography scale based on modular scale (1.25 - Major Third)
+$font-size-xs: 0.75rem;     // 12px
+$font-size-sm: 0.875rem;    // 14px
+$font-size-base: 1rem;      // 16px
+$font-size-lg: 1.125rem;    // 18px
+$font-size-xl: 1.25rem;     // 20px
+$font-size-2xl: 1.5rem;     // 24px
+$font-size-3xl: 1.875rem;   // 30px
+$font-size-4xl: 2.25rem;    // 36px
+$font-size-5xl: 3rem;       // 48px
+$font-size-6xl: 3.75rem;    // 60px
+
+// Line heights
+$line-height-none: 1;
+$line-height-tight: 1.25;
+$line-height-snug: 1.375;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.625;
+$line-height-loose: 2;
+
+// Font weights
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+$font-weight-black: 900;
+
+// Letter spacing
+$letter-spacing-tighter: -0.05em;
+$letter-spacing-tight: -0.025em;
+$letter-spacing-normal: 0em;
+$letter-spacing-wide: 0.025em;
+$letter-spacing-wider: 0.05em;
+$letter-spacing-widest: 0.1em;
+
+// Spacing scale (based on 8px grid)
+$space-0: 0;
+$space-1: 0.25rem;  // 4px
+$space-2: 0.5rem;   // 8px
+$space-3: 0.75rem;  // 12px
+$space-4: 1rem;     // 16px
+$space-5: 1.25rem;  // 20px
+$space-6: 1.5rem;   // 24px
+$space-8: 2rem;     // 32px
+$space-10: 2.5rem;  // 40px
+$space-12: 3rem;    // 48px
+$space-16: 4rem;    // 64px
+$space-20: 5rem;    // 80px
+$space-24: 6rem;    // 96px
+
+// Base typography
+html {
+  font-size: 16px; // Base font size
+  
+  @media (max-width: 768px) {
+    font-size: 15px; // Slightly smaller on mobile
+  }
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-normal;
+  color: #1f2937;
+  letter-spacing: $letter-spacing-tight;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Heading styles
+h1, .h1 {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tighter;
+  color: #111827;
+  margin-bottom: $space-6;
+  
+  @media (max-width: 768px) {
+    font-size: $font-size-3xl;
+    margin-bottom: $space-4;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: $font-size-2xl;
+  }
+}
+
+h2, .h2 {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+  color: #1f2937;
+  margin-top: $space-12;
+  margin-bottom: $space-5;
+  
+  @media (max-width: 768px) {
+    font-size: $font-size-2xl;
+    margin-top: $space-8;
+    margin-bottom: $space-4;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: $font-size-xl;
+  }
+}
+
+h3, .h3 {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+  letter-spacing: $letter-spacing-tight;
+  color: #1f2937;
+  margin-top: $space-10;
+  margin-bottom: $space-4;
+  
+  @media (max-width: 768px) {
+    font-size: $font-size-xl;
+    margin-top: $space-6;
+    margin-bottom: $space-3;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: $font-size-lg;
+  }
+}
+
+h4, .h4 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+  letter-spacing: $letter-spacing-normal;
+  color: #374151;
+  margin-top: $space-8;
+  margin-bottom: $space-3;
+  
+  @media (max-width: 768px) {
+    font-size: $font-size-lg;
+    margin-top: $space-6;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: $font-size-base;
+  }
+}
+
+h5, .h5 {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+  letter-spacing: $letter-spacing-normal;
+  color: #374151;
+  margin-top: $space-6;
+  margin-bottom: $space-2;
+  
+  @media (max-width: 480px) {
+    font-size: $font-size-base;
+  }
+}
+
+h6, .h6 {
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+  letter-spacing: $letter-spacing-wide;
+  color: #4b5563;
+  text-transform: uppercase;
+  margin-top: $space-5;
+  margin-bottom: $space-2;
+}
+
+// Paragraph styles
+p {
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+  color: #374151;
+  margin-bottom: $space-6;
+  
+  &.lead {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-normal;
+    line-height: $line-height-relaxed;
+    color: #4b5563;
+    margin-bottom: $space-8;
+    
+    @media (max-width: 768px) {
+      font-size: $font-size-base;
+    }
+  }
+  
+  &.small, &.text-sm {
+    font-size: $font-size-sm;
+    line-height: $line-height-normal;
+  }
+  
+  &.text-xs {
+    font-size: $font-size-xs;
+    line-height: $line-height-normal;
+  }
+}
+
+// Link styles
+a {
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: $font-weight-medium;
+  letter-spacing: $letter-spacing-normal;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    color: #3730a3;
+  }
+  
+  &:focus {
+    outline: 2px solid #4f46e5;
+    outline-offset: 2px;
+  }
+}
+
+// List styles
+ul, ol {
+  margin-bottom: $space-6;
+  padding-left: $space-6;
+  
+  li {
+    font-size: $font-size-base;
+    line-height: $line-height-relaxed;
+    color: #374151;
+    margin-bottom: $space-2;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  // Nested lists
+  ul, ol {
+    margin-top: $space-2;
+    margin-bottom: $space-2;
+  }
+}
+
+// Blockquote styles
+blockquote {
+  font-size: $font-size-lg;
+  font-style: italic;
+  line-height: $line-height-relaxed;
+  color: #4b5563;
+  border-left: 4px solid #4f46e5;
+  padding: $space-6 $space-8;
+  margin: $space-8 0;
+  background: linear-gradient(90deg, rgba(79, 70, 229, 0.05), transparent);
+  border-radius: 0 8px 8px 0;
+  
+  p {
+    margin-bottom: $space-4;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  cite {
+    font-size: $font-size-sm;
+    font-style: normal;
+    font-weight: $font-weight-medium;
+    color: #6b7280;
+    display: block;
+    margin-top: $space-4;
+    
+    &::before {
+      content: '— ';
+    }
+  }
+}
+
+// Code styles
+code {
+  font-family: 'JetBrains Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+  font-size: 0.875em;
+  font-weight: $font-weight-medium;
+  color: #e11d48;
+  background: #f3f4f6;
+  padding: $space-1 $space-2;
+  border-radius: 4px;
+  letter-spacing: $letter-spacing-normal;
+}
+
+pre {
+  font-family: 'JetBrains Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+  color: #f9fafb;
+  background: #1f2937;
+  padding: $space-6;
+  border-radius: 12px;
+  margin: $space-8 0;
+  overflow-x: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  code {
+    color: inherit;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+  }
+}
+
+// Table typography
+table {
+  font-size: $font-size-sm;
+  
+  th {
+    font-weight: $font-weight-semibold;
+    color: #1f2937;
+    letter-spacing: $letter-spacing-wide;
+    text-transform: uppercase;
+  }
+  
+  td {
+    color: #4b5563;
+    line-height: $line-height-normal;
+  }
+}
+
+// Form typography
+label, .form-label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: #374151;
+  letter-spacing: $letter-spacing-normal;
+  margin-bottom: $space-2;
+}
+
+.form-control {
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: #1f2937;
+  letter-spacing: $letter-spacing-normal;
+  
+  &::placeholder {
+    color: #9ca3af;
+    font-weight: $font-weight-normal;
+  }
+}
+
+// Button typography
+.btn {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  letter-spacing: $letter-spacing-wide;
+  line-height: $line-height-none;
+  
+  &.btn-lg {
+    font-size: $font-size-base;
+    letter-spacing: $letter-spacing-normal;
+  }
+  
+  &.btn-sm {
+    font-size: $font-size-xs;
+    letter-spacing: $letter-spacing-wider;
+  }
+}
+
+// Badge typography
+.badge {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  letter-spacing: $letter-spacing-wider;
+  text-transform: uppercase;
+}
+
+// Navigation typography
+.navbar {
+  .navbar-brand {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    letter-spacing: $letter-spacing-tight;
+  }
+  
+  .nav-link {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    letter-spacing: $letter-spacing-normal;
+  }
+}
+
+// Blog-specific typography
+.blog-post-title {
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-black;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tighter;
+  color: #111827;
+  margin-bottom: $space-8;
+  
+  @media (max-width: 768px) {
+    font-size: $font-size-4xl;
+    margin-bottom: $space-6;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: $font-size-3xl;
+    margin-bottom: $space-4;
+  }
+}
+
+.blog-post-meta {
+  font-size: $font-size-sm;
+  color: #6b7280;
+  letter-spacing: $letter-spacing-normal;
+}
+
+.blog-post-content {
+  font-size: $font-size-lg;
+  line-height: $line-height-relaxed;
+  color: #374151;
+  
+  @media (max-width: 768px) {
+    font-size: $font-size-base;
+  }
+}
+
+// Card typography
+.card {
+  .card-title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: #1f2937;
+    letter-spacing: $letter-spacing-tight;
+  }
+  
+  .card-subtitle {
+    font-size: $font-size-sm;
+    color: #6b7280;
+    font-weight: $font-weight-normal;
+  }
+  
+  .card-text {
+    font-size: $font-size-base;
+    line-height: $line-height-normal;
+    color: #4b5563;
+  }
+}
+
+// Admin interface typography
+.admin-page {
+  .stats-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-none;
+    letter-spacing: $letter-spacing-tight;
+  }
+  
+  .stats-label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    letter-spacing: $letter-spacing-wide;
+    text-transform: uppercase;
+  }
+  
+  .sidebar-wrapper {
+    .nav-header {
+      font-size: $font-size-xs;
+      font-weight: $font-weight-semibold;
+      letter-spacing: $letter-spacing-widest;
+      text-transform: uppercase;
+    }
+    
+    .nav-link {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      letter-spacing: $letter-spacing-normal;
+    }
+  }
+}
+
+// Utility classes for typography
+.text-display {
+  font-size: $font-size-6xl;
+  font-weight: $font-weight-black;
+  line-height: $line-height-none;
+  letter-spacing: $letter-spacing-tighter;
+  
+  @media (max-width: 768px) {
+    font-size: $font-size-5xl;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: $font-size-4xl;
+  }
+}
+
+.text-mono {
+  font-family: 'JetBrains Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+  letter-spacing: $letter-spacing-normal;
+}
+
+// Spacing utilities
+.mb-tight { margin-bottom: $space-2; }
+.mb-normal { margin-bottom: $space-4; }
+.mb-relaxed { margin-bottom: $space-6; }
+.mb-loose { margin-bottom: $space-8; }
+
+.mt-tight { margin-top: $space-2; }
+.mt-normal { margin-top: $space-4; }
+.mt-relaxed { margin-top: $space-6; }
+.mt-loose { margin-top: $space-8; }
+
+// Reading experience optimizations
+.markdown {
+  h1, h2, h3, h4, h5, h6 {
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  }
+  
+  // Optimize line length for reading
+  max-width: 65ch;
+  margin: 0 auto;
+  
+  @media (max-width: 768px) {
+    max-width: none;
+  }
+  
+  p {
+    text-align: justify;
+    hyphens: auto;
+    
+    @media (max-width: 768px) {
+      text-align: left;
+      hyphens: none;
+    }
+  }
+}
+
+// Dark mode support (future enhancement)
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --text-muted: #9ca3af;
+  }
+}
+
+// Print optimizations
+@media print {
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    color: black;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    color: black;
+  }
+  
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  
+  blockquote {
+    page-break-inside: avoid;
+  }
+}
