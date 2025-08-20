@@ -4,3 +4,5 @@
 44444444
 
 修改仓库名后，新建quick thread
+
+修改仓库后，close的thread终端提交
