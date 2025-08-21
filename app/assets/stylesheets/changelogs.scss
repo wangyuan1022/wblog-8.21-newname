@@ -12,28 +12,86 @@ $link-hover-color: #9575cd;
 $badge-bg: $accent-color;
 $badge-text: #111;
 
-body {
-  background-color: #fff5e6; // Apply orange background to the whole page
-  color: #333; // Dark text for better readability on light background
+// 动画定义
+@keyframes pulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
 }
 
+@keyframes slideInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes timelineGlow {
+  0%, 100% { box-shadow: 0 0 5px rgba(142, 68, 173, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(142, 68, 173, 0.6), 0 0 30px rgba(142, 68, 173, 0.4); }
+}
+
+// 移除body背景色设置，让整体页面保持一致的深色主题
+
 .changelog-container {
-  background-color: $dark-bg;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   color: $primary-text;
   padding: 40px 20px;
   margin-bottom: 3rem;
-  border-radius: 8px; // Subtle rounding
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  
+  // 添加装饰性元素
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(142, 68, 173, 0.5) 50%, transparent 100%);
+  }
 
-  .page-header {
+  .changelog-header {
     text-align: center;
     margin-bottom: 4rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid $timeline-line-color;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(142, 68, 173, 0.2);
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, $accent-color, lighten($accent-color, 15%));
+      border-radius: 2px;
+    }
 
     h1 {
-      font-weight: 600;
-      color: $primary-text; // Ensure header text is light
-      margin-bottom: 0.75rem;
+      font-weight: 700;
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #e0e0e0 0%, $accent-color 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 30px rgba(142, 68, 173, 0.3);
+      
+      i {
+        color: $accent-color;
+        text-shadow: 0 0 20px rgba(142, 68, 173, 0.5);
+        animation: pulse 2s ease-in-out infinite alternate;
+      }
     }
 
     p.text-muted {
@@ -58,8 +116,9 @@ body {
       top: 0;
       bottom: 0;
       width: 4px;
-      background: $timeline-line-color;
+      background: linear-gradient(180deg, $accent-color 0%, rgba(142, 68, 173, 0.3) 50%, $accent-color 100%);
       border-radius: 2px;
+      box-shadow: 0 0 10px rgba(142, 68, 173, 0.3);
 
       // Adjust line position on smaller screens
       @media (max-width: 768px) {
@@ -72,6 +131,15 @@ body {
     display: flex;
     position: relative;
     margin-bottom: 50px; // Space between timeline items
+    animation: slideInUp 0.6s ease-out;
+    animation-fill-mode: both;
+    
+    // 逐个动画延迟
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.1}s;
+      }
+    }
 
     &:last-child {
       margin-bottom: 0;
@@ -81,17 +149,26 @@ body {
     &::before {
       content: '';
       position: absolute;
-      left: 124px; // Center the circle on the new line position (130 - 6)
-      top: 10px; // Align with the date vertically
-      width: 16px;
-      height: 16px;
-      background: $timeline-circle-bg;
-      border: 3px solid $timeline-circle-border;
+      left: 122px; // Center the circle on the new line position (130 - 8)
+      top: 8px; // Align with the date vertically
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, $accent-color 0%, lighten($accent-color, 10%) 100%);
+      border: 3px solid #2d2d2d;
       border-radius: 50%;
-      z-index: 1; // Ensure circle is above the line
+      z-index: 2; // Ensure circle is above the line
+      box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.2), inset 0 0 10px rgba(142, 68, 173, 0.3);
+      animation: timelineGlow 3s ease-in-out infinite;
+      transition: all 0.3s ease;
 
       @media (max-width: 768px) {
-        left: 24px; // Adjust circle for moved line (30 - 6)
+        left: 22px; // Adjust circle for moved line (30 - 8)
+      }
+      
+      // 悬停效果
+      .changelog-item:hover &::before {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 6px rgba(142, 68, 173, 0.3), inset 0 0 15px rgba(142, 68, 173, 0.5);
       }
     }
   }
@@ -128,17 +205,35 @@ body {
 
   .timeline-content {
     flex-grow: 1;
-    background-color: $content-bg;
-    padding: 15px 20px; // Slightly adjust padding
-    border-radius: 8px;
-    margin-left: 160px; // Space from left edge (line_left + margin)
-    position: relative; // For potential future pseudo-elements like arrows
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background: linear-gradient(135deg, $content-bg 0%, lighten($content-bg, 3%) 100%);
+    padding: 20px 25px;
+    border-radius: 12px;
+    margin-left: 160px;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    
+    // 添加左侧装饰线
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, $accent-color, lighten($accent-color, 20%));
+      border-radius: 0 4px 4px 0;
+    }
 
     &:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(142, 68, 173, 0.2);
+      
+      &::before {
+        width: 6px;
+        box-shadow: 0 0 15px rgba(142, 68, 173, 0.5);
+      }
     }
 
     .content-header {
@@ -158,9 +253,29 @@ body {
         .badge {
           font-size: 0.9rem;
           vertical-align: middle;
-          background-color: $badge-bg;
-          color: $badge-text;
+          background: linear-gradient(135deg, $accent-color 0%, lighten($accent-color, 15%) 100%);
+          color: #fff;
           font-weight: 600;
+          padding: 6px 12px;
+          border-radius: 20px;
+          box-shadow: 0 4px 12px rgba(142, 68, 173, 0.3);
+          position: relative;
+          overflow: hidden;
+          
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+          }
+          
+          &:hover::after {
+            left: 100%;
+          }
         }
       }
 
@@ -172,7 +287,8 @@ body {
 
         i {
           margin-right: 8px;
-          color: $secondary-text;
+          color: rgba(142, 68, 173, 0.8);
+          transition: color 0.3s ease;
         }
 
         @media (max-width: 576px) {
@@ -223,50 +339,100 @@ body {
     }
   }
 
-  .no-entries {
+  .empty-state {
     text-align: center;
     color: $secondary-text;
-    padding: 40px 0;
-    font-size: 1.1rem;
+    padding: 60px 0;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(42, 42, 42, 0.5), rgba(60, 60, 60, 0.3));
+    margin: 40px 0;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    
+    i {
+      font-size: 4rem;
+      color: rgba(142, 68, 173, 0.6);
+      margin-bottom: 1.5rem;
+      animation: pulse 2s ease-in-out infinite alternate;
+    }
+    
+    h4 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: $primary-text;
+    }
+    
+    p {
+      font-size: 1rem;
+      opacity: 0.8;
+    }
   }
 
   .pagination {
-    margin-top: 3rem;
-    justify-content: center; // Center pagination
+    margin-top: 4rem;
+    justify-content: center;
+    gap: 8px;
 
     .page-item {
-      margin: 0 4px;
-
       .page-link {
-        background-color: $content-bg;
-        border: 1px solid $timeline-line-color;
+        background: linear-gradient(135deg, $content-bg 0%, lighten($content-bg, 5%) 100%);
+        border: 1px solid rgba(142, 68, 173, 0.2);
         color: $link-color;
-        border-radius: 4px;
-        transition: background-color 0.2s ease, color 0.2s ease;
-
+        border-radius: 8px;
+        padding: 10px 16px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-weight: 500;
+        position: relative;
+        overflow: hidden;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(142, 68, 173, 0.1), transparent);
+          transition: left 0.4s;
+        }
+        
         &:hover {
-          background-color: lighten($content-bg, 5%);
+          background: linear-gradient(135deg, lighten($content-bg, 8%) 0%, lighten($content-bg, 12%) 100%);
           color: $link-hover-color;
-          border-color: lighten($timeline-line-color, 10%);
+          border-color: rgba(142, 68, 173, 0.4);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(142, 68, 173, 0.2);
+          
+          &::before {
+            left: 100%;
+          }
         }
 
         &:focus {
            box-shadow: 0 0 0 0.2rem rgba($link-color, 0.25);
+           outline: none;
         }
       }
 
       &.active .page-link {
-        background-color: $accent-color;
+        background: linear-gradient(135deg, $accent-color 0%, lighten($accent-color, 15%) 100%);
         border-color: $accent-color;
-        color: $dark-bg; // Dark text on active background
+        color: #fff;
         font-weight: 600;
+        box-shadow: 0 4px 15px rgba(142, 68, 173, 0.4);
+        transform: translateY(-2px);
       }
 
       &.disabled .page-link {
-        background-color: darken($content-bg, 5%);
-        color: darken($secondary-text, 15%);
-        border-color: $timeline-line-color;
+        background: rgba($content-bg, 0.5);
+        color: rgba($secondary-text, 0.5);
+        border-color: rgba($timeline-line-color, 0.3);
         cursor: not-allowed;
+        
+        &:hover {
+          transform: none;
+          box-shadow: none;
+        }
       }
     }
   }
@@ -275,17 +441,30 @@ body {
 // Responsive adjustments for the timeline structure
 @media (max-width: 768px) {
   .changelog-container {
-    padding: 20px 10px;
+    padding: 20px 15px;
+    border-radius: 12px;
 
-    .page-header {
-      margin-bottom: 2rem;
-      h1 { font-size: 1.8rem; }
-      p.text-muted { font-size: 1rem; max-width: 100%; }
+    .changelog-header {
+      margin-bottom: 2.5rem;
+      
+      h1 { 
+        font-size: 2rem;
+        
+        i {
+          font-size: 1.8rem;
+        }
+      }
+      
+      p.text-muted { 
+        font-size: 1rem; 
+        max-width: 100%; 
+      }
     }
 
     .timeline-container {
       &::before {
-        left: 30px; // Keep line on the left
+        left: 30px;
+        width: 3px;
       }
     }
 
@@ -312,9 +491,14 @@ body {
     }
 
     .timeline-content {
-      margin-left: 50px; // Align content with the date's indent (padding-left)
-      width: calc(100% - 50px); // Ensure it doesn't overlap the line area
-      padding: 15px 15px; // Adjust padding for smaller screens
+      margin-left: 50px;
+      width: calc(100% - 50px);
+      padding: 18px 20px;
+      border-radius: 10px;
+      
+      &::before {
+        width: 3px;
+      }
     }
   }
 }
@@ -322,16 +506,59 @@ body {
 // Further adjustments for very small screens if needed
 @media (max-width: 576px) {
   .changelog-container {
-    .page-header h1 { font-size: 1.6rem; }
+    padding: 15px 12px;
+    border-radius: 10px;
+    
+    .changelog-header h1 { 
+      font-size: 1.8rem; 
+      
+      i {
+        font-size: 1.6rem;
+      }
+    }
 
     .timeline-content {
+      padding: 16px 18px;
+      
       .content-header {
-        h3.version { font-size: 1.2rem; }
-        h4.title { font-size: 1.1rem; }
+        h3.version { 
+          font-size: 1.2rem;
+          
+          .badge {
+            font-size: 0.8rem;
+            padding: 4px 10px;
+          }
+        }
+        
+        h4.title { 
+          font-size: 1.1rem; 
+        }
       }
 
       .content-body {
         font-size: 0.95rem;
+      }
+    }
+    
+    .pagination {
+      margin-top: 3rem;
+      
+      .page-item .page-link {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+      }
+    }
+    
+    .empty-state {
+      padding: 40px 20px;
+      margin: 30px 0;
+      
+      i {
+        font-size: 3rem;
+      }
+      
+      h4 {
+        font-size: 1.3rem;
       }
     }
   }
