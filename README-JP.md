@@ -198,4 +198,6 @@ MIT。
 
 管理者ブログ管理ページ：
 
+
+
 ![screenshot admin](https://github.com/windy/wblog/raw/master/doc/wblog_s_en/admin-posts.png)
