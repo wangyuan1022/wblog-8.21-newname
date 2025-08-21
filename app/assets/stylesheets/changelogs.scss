@@ -1,16 +1,59 @@
-// Variable definitions for easier color management
-$dark-bg: #1a1a1a;
-$content-bg: #2a2a2a;
-$primary-text: #e0e0e0;
-$secondary-text: #b0b0b0;
-$accent-color: #8e44ad; // Purple accent color
-$timeline-line-color: #444;
-$timeline-circle-bg: $accent-color;
-$timeline-circle-border: #333;
-$link-color: #b39ddb; // Light purple for links
-$link-hover-color: #9575cd;
-$badge-bg: $accent-color;
-$badge-text: #111;
+// CSS Custom Properties for light/dark mode support
+:root {
+  // Default (dark mode) colors
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2a2a2a;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --accent-color: #8e44ad;
+  --timeline-line: #444;
+  --timeline-circle-bg: #8e44ad;
+  --timeline-circle-border: #333;
+  --link-color: #b39ddb;
+  --link-hover: #9575cd;
+  --badge-bg: #8e44ad;
+  --badge-text: #111;
+  --shadow-primary: rgba(0, 0, 0, 0.3);
+  --shadow-secondary: rgba(255, 255, 255, 0.05);
+  --border-accent: rgba(142, 68, 173, 0.2);
+  --glow-accent: rgba(142, 68, 173, 0.3);
+}
+
+// Light mode colors
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --accent-color: #6f42c1;
+    --timeline-line: #dee2e6;
+    --timeline-circle-bg: #6f42c1;
+    --timeline-circle-border: #e9ecef;
+    --link-color: #5a32a3;
+    --link-hover: #4c2a87;
+    --badge-bg: #6f42c1;
+    --badge-text: #ffffff;
+    --shadow-primary: rgba(0, 0, 0, 0.1);
+    --shadow-secondary: rgba(0, 0, 0, 0.05);
+    --border-accent: rgba(111, 66, 193, 0.2);
+    --glow-accent: rgba(111, 66, 193, 0.2);
+  }
+}
+
+// Backward compatibility variables
+$dark-bg: var(--bg-primary);
+$content-bg: var(--bg-secondary);
+$primary-text: var(--text-primary);
+$secondary-text: var(--text-secondary);
+$accent-color: var(--accent-color);
+$timeline-line-color: var(--timeline-line);
+$timeline-circle-bg: var(--timeline-circle-bg);
+$timeline-circle-border: var(--timeline-circle-border);
+$link-color: var(--link-color);
+$link-hover-color: var(--link-hover);
+$badge-bg: var(--badge-bg);
+$badge-text: var(--badge-text);
 
 // 动画定义
 @keyframes pulse {
@@ -30,19 +73,19 @@ $badge-text: #111;
 }
 
 @keyframes timelineGlow {
-  0%, 100% { box-shadow: 0 0 5px rgba(142, 68, 173, 0.3); }
-  50% { box-shadow: 0 0 20px rgba(142, 68, 173, 0.6), 0 0 30px rgba(142, 68, 173, 0.4); }
+  0%, 100% { box-shadow: 0 0 5px var(--glow-accent); }
+  50% { box-shadow: 0 0 20px var(--glow-accent), 0 0 30px var(--glow-accent); }
 }
 
 // 移除body背景色设置，让整体页面保持一致的深色主题
 
 .changelog-container {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  color: $primary-text;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  color: var(--text-primary);
   padding: 40px 20px;
   margin-bottom: 3rem;
   border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px var(--shadow-primary), 0 0 0 1px var(--shadow-secondary);
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
@@ -55,14 +98,14 @@ $badge-text: #111;
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(142, 68, 173, 0.5) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, var(--glow-accent) 50%, transparent 100%);
   }
 
   .changelog-header {
     text-align: center;
     margin-bottom: 4rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(142, 68, 173, 0.2);
+    border-bottom: 1px solid var(--border-accent);
     position: relative;
     
     &::after {
@@ -73,30 +116,30 @@ $badge-text: #111;
       transform: translateX(-50%);
       width: 60px;
       height: 2px;
-      background: linear-gradient(90deg, $accent-color, lighten($accent-color, 15%));
+      background: linear-gradient(90deg, var(--accent-color), var(--accent-color));
       border-radius: 2px;
     }
 
     h1 {
       font-weight: 700;
       font-size: 2.5rem;
-      background: linear-gradient(135deg, #e0e0e0 0%, $accent-color 100%);
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       margin-bottom: 1rem;
-      text-shadow: 0 0 30px rgba(142, 68, 173, 0.3);
+      text-shadow: 0 0 30px var(--glow-accent);
       
       i {
-        color: $accent-color;
-        text-shadow: 0 0 20px rgba(142, 68, 173, 0.5);
+        color: var(--accent-color);
+        text-shadow: 0 0 20px var(--glow-accent);
         animation: pulse 2s ease-in-out infinite alternate;
       }
     }
 
     p.text-muted {
       font-size: 1.1rem;
-      color: $secondary-text; // Muted text should also be light
+      color: var(--text-secondary); // Muted text should also be light
       max-width: 90%;
       margin: 0 auto;
     }
@@ -116,9 +159,9 @@ $badge-text: #111;
       top: 0;
       bottom: 0;
       width: 4px;
-      background: linear-gradient(180deg, $accent-color 0%, rgba(142, 68, 173, 0.3) 50%, $accent-color 100%);
+      background: linear-gradient(180deg, var(--accent-color) 0%, var(--glow-accent) 50%, var(--accent-color) 100%);
       border-radius: 2px;
-      box-shadow: 0 0 10px rgba(142, 68, 173, 0.3);
+      box-shadow: 0 0 10px var(--glow-accent);
 
       // Adjust line position on smaller screens
       @media (max-width: 768px) {
@@ -153,11 +196,11 @@ $badge-text: #111;
       top: 8px; // Align with the date vertically
       width: 20px;
       height: 20px;
-      background: radial-gradient(circle, $accent-color 0%, lighten($accent-color, 10%) 100%);
-      border: 3px solid #2d2d2d;
+      background: radial-gradient(circle, var(--accent-color) 0%, var(--accent-color) 100%);
+      border: 3px solid var(--timeline-circle-border);
       border-radius: 50%;
       z-index: 2; // Ensure circle is above the line
-      box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.2), inset 0 0 10px rgba(142, 68, 173, 0.3);
+      box-shadow: 0 0 0 3px var(--border-accent), inset 0 0 10px var(--glow-accent);
       animation: timelineGlow 3s ease-in-out infinite;
       transition: all 0.3s ease;
 
@@ -168,7 +211,7 @@ $badge-text: #111;
       // 悬停效果
       .changelog-item:hover &::before {
         transform: scale(1.2);
-        box-shadow: 0 0 0 6px rgba(142, 68, 173, 0.3), inset 0 0 15px rgba(142, 68, 173, 0.5);
+        box-shadow: 0 0 0 6px var(--border-accent), inset 0 0 15px var(--glow-accent);
       }
     }
   }
@@ -181,7 +224,7 @@ $badge-text: #111;
     padding-right: 15px; // Space between date text and the line
     top: 8px; // Align vertically with the circle's top edge
     font-weight: 500;
-    color: $primary-text; // Make date text clearer
+    color: var(--text-primary); // Make date text clearer
     font-size: 1rem;   // Increase date font size slightly
 
     @media (max-width: 768px) {
@@ -205,12 +248,12 @@ $badge-text: #111;
 
   .timeline-content {
     flex-grow: 1;
-    background: linear-gradient(135deg, $content-bg 0%, lighten($content-bg, 3%) 100%);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-secondary) 100%);
     padding: 20px 25px;
     border-radius: 12px;
     margin-left: 160px;
     position: relative;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px var(--shadow-primary), 0 0 0 1px var(--shadow-secondary);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(10px);
     
@@ -222,43 +265,43 @@ $badge-text: #111;
       top: 0;
       bottom: 0;
       width: 4px;
-      background: linear-gradient(180deg, $accent-color, lighten($accent-color, 20%));
+      background: linear-gradient(180deg, var(--accent-color), var(--accent-color));
       border-radius: 0 4px 4px 0;
     }
 
     &:hover {
       transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(142, 68, 173, 0.2);
+      box-shadow: 0 20px 40px var(--shadow-primary), 0 0 0 1px var(--border-accent);
       
       &::before {
         width: 6px;
-        box-shadow: 0 0 15px rgba(142, 68, 173, 0.5);
+        box-shadow: 0 0 15px var(--glow-accent);
       }
     }
 
     .content-header {
       padding-bottom: 10px;
       margin-bottom: 15px;
-      border-bottom: 1px solid $timeline-line-color;
+      border-bottom: 1px solid var(--timeline-line);
       display: flex;
       align-items: center;
       flex-wrap: wrap; // Allow wrapping on small screens
 
       h3.version {
         font-size: 1.4rem;
-        color: $primary-text;
+        color: var(--text-primary);
         font-weight: 700;
         margin: 0;
 
         .badge {
           font-size: 0.9rem;
           vertical-align: middle;
-          background: linear-gradient(135deg, $accent-color 0%, lighten($accent-color, 15%) 100%);
-          color: #fff;
+          background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color) 100%);
+          color: var(--badge-text);
           font-weight: 600;
           padding: 6px 12px;
           border-radius: 20px;
-          box-shadow: 0 4px 12px rgba(142, 68, 173, 0.3);
+          box-shadow: 0 4px 12px var(--glow-accent);
           position: relative;
           overflow: hidden;
           
@@ -281,13 +324,13 @@ $badge-text: #111;
 
       h4.title {
         font-size: 1.2rem;
-        color: $accent-color; // Use accent color for title
+        color: var(--accent-color); // Use accent color for title
         font-weight: 500;
         margin: 0 0 0 15px; // Space between version and title
 
         i {
           margin-right: 8px;
-          color: rgba(142, 68, 173, 0.8);
+          color: var(--accent-color);
           transition: color 0.3s ease;
         }
 
@@ -300,7 +343,7 @@ $badge-text: #111;
     }
 
     .content-body {
-      color: $primary-text;
+      color: var(--text-primary);
       line-height: 1.7;
       font-size: 1rem;
 
@@ -317,16 +360,16 @@ $badge-text: #111;
           margin-bottom: 0.6rem;
 
           &::marker {
-            color: $accent-color; // Style the list bullet
+            color: var(--accent-color); // Style the list bullet
           }
         }
       }
 
       a {
-        color: $link-color;
+        color: var(--link-color);
         text-decoration: none;
         &:hover {
-          color: $link-hover-color;
+          color: var(--link-hover);
           text-decoration: underline;
         }
       }
@@ -341,25 +384,26 @@ $badge-text: #111;
 
   .empty-state {
     text-align: center;
-    color: $secondary-text;
+    color: var(--text-secondary);
     padding: 60px 0;
     border-radius: 16px;
-    background: linear-gradient(135deg, rgba(42, 42, 42, 0.5), rgba(60, 60, 60, 0.3));
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-secondary));
     margin: 40px 0;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--shadow-secondary);
     
     i {
       font-size: 4rem;
-      color: rgba(142, 68, 173, 0.6);
+      color: var(--accent-color);
       margin-bottom: 1.5rem;
       animation: pulse 2s ease-in-out infinite alternate;
+      opacity: 0.6;
     }
     
     h4 {
       font-size: 1.5rem;
       margin-bottom: 1rem;
-      color: $primary-text;
+      color: var(--text-primary);
     }
     
     p {
@@ -375,9 +419,9 @@ $badge-text: #111;
 
     .page-item {
       .page-link {
-        background: linear-gradient(135deg, $content-bg 0%, lighten($content-bg, 5%) 100%);
-        border: 1px solid rgba(142, 68, 173, 0.2);
-        color: $link-color;
+        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-secondary) 100%);
+        border: 1px solid var(--border-accent);
+        color: var(--link-color);
         border-radius: 8px;
         padding: 10px 16px;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -392,16 +436,16 @@ $badge-text: #111;
           left: -100%;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(142, 68, 173, 0.1), transparent);
+          background: linear-gradient(90deg, transparent, var(--glow-accent), transparent);
           transition: left 0.4s;
         }
         
         &:hover {
-          background: linear-gradient(135deg, lighten($content-bg, 8%) 0%, lighten($content-bg, 12%) 100%);
-          color: $link-hover-color;
-          border-color: rgba(142, 68, 173, 0.4);
+          background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-secondary) 100%);
+          color: var(--link-hover);
+          border-color: var(--border-accent);
           transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(142, 68, 173, 0.2);
+          box-shadow: 0 4px 12px var(--glow-accent);
           
           &::before {
             left: 100%;
@@ -409,25 +453,26 @@ $badge-text: #111;
         }
 
         &:focus {
-           box-shadow: 0 0 0 0.2rem rgba($link-color, 0.25);
+           box-shadow: 0 0 0 0.2rem var(--glow-accent);
            outline: none;
         }
       }
 
       &.active .page-link {
-        background: linear-gradient(135deg, $accent-color 0%, lighten($accent-color, 15%) 100%);
-        border-color: $accent-color;
-        color: #fff;
+        background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color) 100%);
+        border-color: var(--accent-color);
+        color: var(--badge-text);
         font-weight: 600;
-        box-shadow: 0 4px 15px rgba(142, 68, 173, 0.4);
+        box-shadow: 0 4px 15px var(--glow-accent);
         transform: translateY(-2px);
       }
 
       &.disabled .page-link {
-        background: rgba($content-bg, 0.5);
-        color: rgba($secondary-text, 0.5);
-        border-color: rgba($timeline-line-color, 0.3);
+        background: var(--bg-secondary);
+        color: var(--text-secondary);
+        border-color: var(--timeline-line);
         cursor: not-allowed;
+        opacity: 0.5;
         
         &:hover {
           transform: none;
